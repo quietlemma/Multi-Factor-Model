@@ -137,9 +137,9 @@ Multi-Factor-Model/
   RR-set-based implementations for the multi-factor setting.
   - mf_rr.py: implementations of MF-RR and MF-IMM, including RR-set sampling and max-cover style seed selection(OPIM-C code link at bottom)
 - Growth RR-Set (IMM)/
-  Contains only the modified parts relative to the original IMM source code, adapted for the multi-factor (all-factor) setting.
+  Contains only the modified parts relative to the original IMM source code, adapted for the multi-factor (all-factor) setting. Original source code: see Acknowledgments.
 - Growth RR-Set (OPIM-C)/
-  Contains only the modified parts relative to the original OPIM-C source code, adapted for the multi-factor (all-factor) setting.
+  Contains only the modified parts relative to the original OPIM-C source code, adapted for the multi-factor (all-factor) setting. Original source code: see Acknowledgments.
 - SAGraph-baseline/
   Baseline code adapted from the SAGraph framework.
   - IC.py, LT.py, im.py, nx.py: supporting baseline implementations and utilities used for comparison, for running in weibo dataset.
