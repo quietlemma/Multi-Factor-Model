@@ -2,19 +2,19 @@
 
 ## All-Factor Model: Experimental Results on Twitter
 
-The following results supplement Section 6.2 of the paper. Due to page constraints, the complete experimental results for the all-factor model are provided here.
+The following results supplement Section 6.2 of the paper. Due to our paper length, the complete experimental results for the all-factor model are provided here.
 
 ### Experimental Setup
 
 | Parameter | Value |
 |-----------|-------|
 | Dataset | Twitter (~52.58M nodes, 1.963B edges) |
-| Model | All-Factor (IC-Mix): **30%** of nodes in the auxiliary graph propagate under the all-factor condition |
-| Per-factor activation probability | **p = 0.75** |
+| Model | All-Factor: **30%** of nodes in the graph propagate under the all-factor condition |
+| For current node v:<br />Neighbor to factor/factor to v | **p = 1/degree<br />single-factor: p = 0.75 (all factors $`\phi`$ must be active)** |
 | Number of RR-sets (fixed) | **10,000** |
 | Budget range | k = 0, 5, 10, …, 50 |
 | Factor settings | 2-factor, 3-factor, 5-factor |
-| Algorithms | RR-Set(IMM), RR-Set(OPIM-C) |
+| Algorithms | Growth RR-Set (IMM), Growth RR-Set (OPIM-C) |
 
 ### Influence Comparison
 
@@ -35,7 +35,6 @@ Both methods take the longest under the 3-factor setting, rather than the 5-fact
 ---
 
 This project is the open source code of paper "Submodular and Beyond: Influence Maximization in General Social Networks with Multiple Factors".
-Experimental code for **Influence Maximization in General Social Networks with Multiple Factors**.
 
 ## Requirements
 
@@ -55,7 +54,7 @@ Three benchmark graphs are included under the `LFG/` directory. Pass the logical
 | `Wiki`       | `LFG/soc-wiki-Vote.txt`  |
 
 
-The other two datasets used in our paper are: [Twitter](https://twitter.mpi-sws.org/links-anon.txt.gz), [SAGraph](https://github.com/xiaoqzhwhu/SAGraph/tree/main)
+For large-scale and real-world datasets， we use:[Twitter](https://twitter.mpi-sws.org/links-anon.txt.gz), [SAGraph](https://github.com/xiaoqzhwhu/SAGraph/tree/main)
 
 ## Quick start
 
@@ -76,6 +75,8 @@ python main.py \
   --algorithms LFG MaxDegree Random GWDM MF-RR MF-IMM \
   --output gn_mftrigger5.csv
 ```
+
+Among `--algorithms`, `MF-RR` corresponds to RR-Set (Hypergrah), and `MF-IMM` corresponds to the Python implementation of IMM.
 
 Results are written to `**gn_mftrigger5.csv**` (and checkpointed after each budget `k`).
 
@@ -102,8 +103,10 @@ Multi-Factor-Model/
 │   ├── ca-netscience.txt
 │   ├── p2p-Gnutella08.txt
 │   └── soc-wiki-Vote.txt
-├── RRSet/
+├── RR-Set (Hypergrah)/
 │   └── mf_rr.py
+├── Growth RR-Set (IMM)/
+├── Growth RR-Set (OPIM-C)/
 └── SAGraph-baseline/
     ├── IC.py
     ├── LT.py
@@ -130,9 +133,13 @@ Multi-Factor-Model/
   - algo.py: implementations of LFG, Greedy, MaxDegree, Random, and GWDM
   - ca-netscience.txt, p2p-Gnutella08.txt, soc-wiki-Vote.txt: bundled benchmark graphs used in experiments,.
   - for MC based greedy algorithm, refer to Kempe's paper.
-- RRSet/
+- RR-Set (Hypergrah)/
   RR-set-based implementations for the multi-factor setting.
   - mf_rr.py: implementations of MF-RR and MF-IMM, including RR-set sampling and max-cover style seed selection(OPIM-C code link at bottom)
+- Growth RR-Set (IMM)/
+  Contains only the modified parts relative to the original IMM source code, adapted for the multi-factor (all-factor) setting.
+- Growth RR-Set (OPIM-C)/
+  Contains only the modified parts relative to the original OPIM-C source code, adapted for the multi-factor (all-factor) setting.
 - SAGraph-baseline/
   Baseline code adapted from the SAGraph framework.
   - IC.py, LT.py, im.py, nx.py: supporting baseline implementations and utilities used for comparison, for running in weibo dataset.
@@ -144,11 +151,12 @@ Multi-Factor-Model/
 The experiment harness supports three model families (selected via `--model`):
 
 
-| Model       | Diffusion type      | Factor counts |
-| ----------- | ------------------- | ------------- |
-| `MFIC`      | Independent Cascade | 2, 3, 5       |
-| `MFLT`      | Linear Threshold    | 2, 3, 5       |
-| `MFTRIGGER` | The Trigger Model   | 2, 3, 5       |
+| Model        | Diffusion type      | Factor counts |
+| ------------ | ------------------- | ------------- |
+| `MFIC`       | Independent Cascade | 2, 3, 5       |
+| `MFLT`       | Linear Threshold    | 2, 3, 5       |
+| `MFTRIGGER`  | The Trigger Model   | 2, 3, 5       |
+| `All-Factor` | As described above  | 2, 3, 5       |
 
 
 For each run, the pipeline:
