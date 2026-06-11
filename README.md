@@ -79,7 +79,7 @@ python main.py \
 
 Among `--algorithms`, `MF-RR` corresponds to RR-Set (Hypergrah), and `MF-IMM` corresponds to the Python implementation of IMM.
 
-Results are written to `**gn_mftrigger5.csv**` (and checkpointed after each budget `k`).
+Results are written to `gn_mftrigger5.csv` (and checkpointed after each budget `k`).
 
 On Windows (PowerShell), the same command on one line:
 
@@ -135,8 +135,7 @@ Multi-Factor-Model/
   - ca-netscience.txt, p2p-Gnutella08.txt, soc-wiki-Vote.txt: bundled benchmark graphs used in experiments,.
   - for MC based greedy algorithm, refer to Kempe's paper.
 - RR-Set (Hypergrah)/
-  RR-set-based implementations for the multi-factor setting.
-  - mf_rr.py: implementations of MF-RR and MF-IMM, including RR-set sampling and max-cover style seed selection(OPIM-C code link at bottom)
+  Python implementation of the multi-factor model based on RR-sets. Original paper: see Acknowledgments.
 - Growth RR-Set (IMM)/
   Contains only the modified parts relative to the original IMM source code, adapted for the multi-factor (all-factor) setting. Original source code: see Acknowledgments.
 - Growth RR-Set (OPIM-C)/
@@ -179,6 +178,7 @@ The publicly available influence maximization baselines mentioned in the experim
 
 - **[OPIM** (Online Processing Algorithms for Influence Maximization)](https://github.com/tangj90/OPIM)
 - **[IMM** (Influence Maximization in Near-Linear Time: A Martingale Approach)](https://sourceforge.net/projects/im-imm/) 
+- **[RR-set** (Maximizing Social Influence in Nearly Optimal Time)](https://arxiv.org/pdf/1212.0884)
 - **[SAGraph** (SAGraph: A Large-Scale Social Graph Dataset with Comprehensive Context for Influencer Selection in Marketing)](https://github.com/xiaoqzhwhu/SAGraph/tree/main)
 
 <!-- ## Citation
