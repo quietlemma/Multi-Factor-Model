@@ -135,7 +135,7 @@ Multi-Factor-Model/
   - ca-netscience.txt, p2p-Gnutella08.txt, soc-wiki-Vote.txt: bundled benchmark graphs used in experiments,.
   - for MC based greedy algorithm, refer to Kempe's paper.
 - RR-Set (Hypergrah)/
-  Python implementation of the multi-factor model based on RR-sets. Original paper: see Acknowledgments.
+  Python implementation of the multi-factor model based on RR-sets. Original source code: see Acknowledgments.
 - Growth RR-Set (IMM)/
   Contains only the modified parts relative to the original IMM source code, adapted for the multi-factor (all-factor) setting. Original source code: see Acknowledgments.
 - Growth RR-Set (OPIM-C)/
