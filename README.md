@@ -8,10 +8,10 @@ The following results supplement Section 6.2 of the paper. Due to our paper leng
 
 | Parameter | Value |
 |-----------|-------|
-| Dataset | Twitter (~52.58M nodes, 1.963B edges) |
+| Dataset | Twitter (~52.58M nodes, 1.963G edges) |
 | Model | All-Factor: **30%** of nodes in the graph propagate under the all-factor condition |
 | For current node v:<br />Neighbor to factor/factor to v | **p = 1/degree<br />single-factor: p = 0.75 (all factors $`\phi`$ must be active)** |
-| Number of RR-sets (fixed):(i.e., run online algorithms) | **10,000** |
+| Number of RR-sets (fixed): (i.e., run online algorithms) | **10,000** |
 | Budget range | k = 0, 5, 10, …, 50 |
 | Factor settings | 2-factor, 3-factor, 5-factor |
 | Algorithms | Growth RR-Set (IMM), Growth RR-Set (OPIM-C) |
@@ -41,6 +41,7 @@ This project is the open source code of paper "Submodular and Beyond: Influence 
 - Python 3.8+
 - [NumPy](https://numpy.org/)
 - Optional: [PyTorch](https://pytorch.org/) with CUDA — used only when running **MFLT** with the GPU evaluator.
+- For `Growth RR-Set (IMM)/` and `Growth RR-Set (OPIM-C)/`: the C++ build/runtime environment is the same as the original IMM and OPIM-C source code.
 
 ## Datasets
 
